@@ -1,0 +1,86 @@
+spring:
+  application:
+    name:
+      drawu-spring
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://121.37.242.119:3306/huihui
+    username: root
+    password: wlmtsys@163.com
+#    hikari:
+#      max-lifetime: 600000  # 单位为毫秒，这里设置为10分钟
+#      connection-timeout: 30000  # 单位为毫秒，这里设置为30秒
+#      idle-timeout: 600000  # 单位为毫秒，这里设置为10分钟
+#      maximum-pool-size: 10
+#      minimum-idle: 5
+  mvc:
+    date: yyyy-MM-dd
+    time: HH:mm:ss
+    date-time: yyyy-MM-dd HH:mm:ss
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+  data:
+    redis:
+      host: 121.37.242.119
+      port: 6379
+      password: wlmtsys@163.com
+      database: 1
+#Mybatis
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+#华为云OBS存储桶名称
+obs:
+  bucketName: drawu
+  #华为云OBS服务节点，如上海（China East）
+  endpoint: obs.cn-south-1.myhuaweicloud.com
+  #华为云OBS账户AK
+  accessKey: 15VVYEBYOTBW0MXZPPRL
+  #华为云OBS账户SK
+  secretKey: HvZKFxJkDUdd3FN5Agg0TR8npTyUn3KimnXmHHrN
+
+server:
+  port:
+    33333
+
+knife4j:
+  enable: true
+  setting:
+    # Knife4j默认显示中文(zh-CN),如果开发者想直接显示英文(en-US)，在通过该配置进行设置即可
+    language: zh-CN
+
+mybatis-plus:
+  configuration:
+    default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler
+  global-config:
+    db-config:
+      update-strategy: not_null
+      id-type: auto
+
+wm:
+  jwt:
+    # 设置jwt签名加密时使用的秘钥
+    admin-secret-key: itcast
+    # 设置jwt过期时间
+    admin-ttl: 720000
+    # 设置前端传递过来的令牌名称
+    admin-token-name: token
+    # 设置jwt签名加密时使用的秘钥  eyJhbGciOiJIUzI1NiJ9.eyJlbXBJZCI6MSwiZXhwIjo3MjAxN…DA3fQ.u46qFIQYYOSXcIRdAyZy154A6dQdGLyA0rqSWFUhoPU
+    user-secret-key: itheima
+    # 设置jwt过期时间
+    user-ttl: 72000000000
+    # 设置前端传递过来的令牌名称
+    user-token-name: authentication
+  wechat:
+    appid: wx0dc2173427c87aa3
+    secret: a898720bbb29dc61a96803b9cfdc1d1e
+
+logging:
+  level:
+    org.springframework.jdbc.support.JdbcTransactionManager: debug
