@@ -3,10 +3,14 @@ package com.hui.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hui.domain.Result;
 import com.hui.domain.po.Life;
+import com.hui.domain.po.Lifecontents;
 import com.hui.enums.AppHttpCodeEnum;
 import com.hui.mapper.LifeMapper;
+import com.hui.mapper.LifecontentsMapper;
 import com.hui.service.ILifeService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.hui.service.ILifecontentsService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +24,11 @@ import java.util.List;
  * @since 2024-10-21
  */
 @Service
+@RequiredArgsConstructor
 public class LifeServiceImpl extends ServiceImpl<LifeMapper, Life> implements ILifeService {
+
+    private final LifecontentsMapper lifecontentsMapper;
+
 
     /**
      * 获取生活信息
@@ -43,9 +51,10 @@ public class LifeServiceImpl extends ServiceImpl<LifeMapper, Life> implements IL
      * @return
      */
     @Override
-    public Result<List<Life>> getLifeById(Integer id) {
-        QueryWrapper<Life> wrapper = new QueryWrapper<Life>().eq("li_id", id);
-        List<Life> list = list(wrapper);
+    public Result<List<Lifecontents>> getLifeById(Integer id) {
+
+        QueryWrapper<Lifecontents> wrapper = new QueryWrapper<Lifecontents>().eq("li_id", id).orderByDesc("id");
+        List<Lifecontents> list = lifecontentsMapper.selectList(wrapper);
         if (list==null || list.size() == 0){
             return Result.errorResult(AppHttpCodeEnum.AP_USER_DATA_NOT_EXIST);
         }

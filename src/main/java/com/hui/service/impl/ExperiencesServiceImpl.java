@@ -35,7 +35,7 @@ public class ExperiencesServiceImpl extends ServiceImpl<ExperiencesMapper, Exper
     public Result<List<ExperiencesVO>> getExperiences() {
         // 查询所有经历
         QueryWrapper<Experiences> experiencesQueryWrapper = new QueryWrapper<>();
-        experiencesQueryWrapper.orderByAsc("year");
+        experiencesQueryWrapper.orderByDesc("year");
         List<Experiences> experiences = experiencesMapper.selectList(experiencesQueryWrapper);
         List<ExperiencesVO> list = BeanUtils.copyList(experiences, ExperiencesVO.class);
         for (ExperiencesVO experiencesVO : list) {

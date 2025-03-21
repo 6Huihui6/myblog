@@ -3,6 +3,7 @@ package com.hui.service;
 import com.hui.domain.Result;
 import com.hui.domain.po.Life;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.hui.domain.po.Lifecontents;
 
 import java.util.List;
 
@@ -27,5 +28,5 @@ public interface ILifeService extends IService<Life> {
      * @param id
      * @return
      */
-    Result<List<Life>> getLifeById(Integer id);
+    Result<List<Lifecontents>> getLifeById(Integer id);
 }

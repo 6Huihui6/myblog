@@ -3,6 +3,7 @@ package com.hui.controller;
 
 import com.hui.domain.Result;
 import com.hui.domain.po.Life;
+import com.hui.domain.po.Lifecontents;
 import com.hui.service.ILifeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -39,7 +40,7 @@ public class LifeController {
 
     @GetMapping("/{id}")
     @Operation(summary = "获取生活信息")
-    public Result<List<Life> >getLifeById(@PathVariable Integer id){
+    public Result<List<Lifecontents> >getLifeById(@PathVariable Integer id){
         return lifeService.getLifeById(id);
     }
 
